@@ -1,4 +1,3 @@
-<!-- src/App.vue -->
 <template>
   <div id="app">
     <button @click="openModal">Open Modal</button>
@@ -9,36 +8,23 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
 import Modal from './components/Modal.vue'
 import { useModalStore } from './stores/modalStore'
 
-export default defineComponent({
-  components: {
-    Modal
-  },
-  setup() {
-    const modalStore = useModalStore()
+const modalStore = useModalStore()
 
-    const openModal = () => {
-      modalStore.openModal()
-      modalStore.setLoading(true)
-      setTimeout(() => {
-        modalStore.setLoading(false)
-      }, 2000)
-    }
+const openModal = () => {
+  modalStore.openModal()
+  modalStore.setLoading(true)
+  setTimeout(() => {
+    modalStore.setLoading(false)
+  }, 2000)
+}
 
-    const closeModal = () => {
-      modalStore.closeModal()
-    }
-
-    return {
-      openModal,
-      closeModal
-    }
-  }
-})
+const closeModal = () => {
+  modalStore.closeModal()
+}
 </script>
 
 <style>
